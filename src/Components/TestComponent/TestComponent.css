@@ -1,0 +1,23 @@
+.test-page {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid lightgrey;
+    padding: 1vh 2vw ;
+}
+.test-card {
+    min-height: 10vh;
+    border: 1px solid lightgray;
+}
+.test-content {
+    width: 100%;
+    display: flex;
+}
+.test-card {
+    width: 50%;
+    min-height: 5vh;
+}
+.test-progress,
+.test-timer {
+    display: flex;
+    flex-direction: column;
+}
