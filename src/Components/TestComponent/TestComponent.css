@@ -4,6 +4,9 @@
     border: 1px solid lightgrey;
     padding: 1vh 2vw ;
 }
+li {
+    list-style-type: none;
+}
 .test-card {
     min-height: 10vh;
     border: 1px solid lightgray;
@@ -20,4 +23,12 @@
 .test-timer {
     display: flex;
     flex-direction: column;
+}
+.next-question {
+    display: block;
+    width: 80px;
+    height: 40px;
+    border: 1px solid lightgray;
+    text-align: center;
+    line-height: 40px;
 }
