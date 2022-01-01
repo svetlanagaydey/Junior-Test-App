@@ -4,13 +4,25 @@ import TestsList from './TestList';
 
 const TestComponent = () => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [answers, setAnswer] = useState();
-	async function toNext()  {
-		setCurrentQuestion(currentQuestion + 1);
+	const [answers, setAnswers] = useState([{}]);
+	
+
+	function toNext()  {
+
+		if (currentQuestion >= TestsList.length-1) {
+			console.log('The end!')
+		} else
+			setCurrentQuestion(currentQuestion + 1);
 	}
 	const setCurrentAnswer = (e) => {
-		setAnswer(e.target.id);	
-		console.log(answers);
+		setAnswers([{
+			currentAnswer: e.target.id,
+			writeAnswer: TestsList[currentQuestion].questions[0].writeOptionInex,
+			isWrite: e.target.id===TestsList[currentQuestion].questions[0].writeOptionInex.toString(),
+		}]);	
+		// console.log(answers.currentAnswer === answers.writeAnswer)
+		// console.log(TestsList[currentQuestion].questions[0].writeOptionInex)
+		console.log(answers[0].isWrite);
 	}
 
 
@@ -20,7 +32,7 @@ const TestComponent = () => {
 			<div className='test-content'>
 				<div className='test-progress'>
 						<span>Progress</span>
-						<span>$ from $</span>
+						<span>{currentQuestion+1} from {TestsList.length}</span>
 				</div>
 				
 				<div className='test-card'>
@@ -32,24 +44,22 @@ const TestComponent = () => {
 								<ul className='questionsList'>
 									{quest.options.filter(() => quest.writeOptionInex.length===1)
 									.map((answer, index) => {
-											return (
-												<li key={index} className='answer'>
-													<input type="radio" id={index} name='radio' onChange={setCurrentAnswer}/>
-													<label htmlFor={index}>{answer}</label>
-												</li>
-											)
-										})
-									}
+										return (
+											<li key={index} className='answer'>
+												<input type="radio" id={index} name='radio' onChange={setCurrentAnswer}/>
+												<label htmlFor={index}>{answer}</label>
+											</li>
+										)
+									})}
 									{quest.options.filter(() => quest.writeOptionInex.length>1)
 									.map((answer, index) => {
-											return (
-												<li key={index} className='answer'>
-												<input type="checkbox" id={index}/>
-												<label htmlFor={index}>{answer}</label>
-												</li>
-											)
-										})
-									}
+										return (
+											<li key={index} className='answer'>
+											<input type="checkbox" id={index}/>
+											<label htmlFor={index}>{answer}</label>
+											</li>
+										)
+									})}
 								</ul>
 							</div>
 						)
