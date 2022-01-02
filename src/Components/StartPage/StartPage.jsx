@@ -11,9 +11,9 @@ const StartPage = () => {
 				<main className="main-container">
 					<ul>
 						<li><Link to="/topic1">Topic1</Link></li>
-						<li><Link to="/topic2">Topic2</Link></li>
+						{/* <li><Link to="/topic2">Topic2</Link></li>
 						<li><Link to="/topic3">Topic3</Link></li>
-						<li><Link to="/topic4">Topic4</Link></li>
+						<li><Link to="/topic4">Topic4</Link></li> */}
 					</ul>
 					<div className="main-content">
 						<h1>Start Page</h1>
