@@ -5,28 +5,56 @@ import TestsList from './TestList';
 const TestComponent = () => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [answers, setAnswers] = useState([]);
+	const [checked, setChecked] = useState([]);
+	const [totalAnswer, setTotalAnswer] = useState([]);
+
+	const handleChecked = (e) => {
+    let prev = checked;
+    let itemIndex = prev.indexOf(e.target.id);
+    if (itemIndex !== -1) {
+      prev.splice(itemIndex, 1);
+    } else {
+      prev.push(e.target.id);
+    }
+		setChecked([...prev]);
+		setAnswers([{
+			currentQuestion: TestsList[currentQuestion].questions[0].questionText,
+			currentAnswer: checked,
+			writeAnswer: TestsList[currentQuestion].questions[0].writeOptionInex,
+		}]);
+  }
 	
 
 	function toNext()  {
-		if (currentQuestion >= TestsList.length-1) {
-			console.log('The end!')
-		} else {
-			setCurrentQuestion(currentQuestion + 1);
-		}
+			if (currentQuestion < TestsList.length-1) {
+				const temp = [...totalAnswer];
+				temp.push(answers);
+				setTotalAnswer(temp);
+				setCurrentQuestion(currentQuestion + 1);
+			}
+			if ((currentQuestion === TestsList.length-1)&&(totalAnswer.length!==TestsList.length)) {
+				const temp = [...totalAnswer];
+				temp.push(answers);
+				setTotalAnswer(temp);
+				// console.log('The end!');
+				// console.log(totalAnswer);
+			} 
 
 	}
 	const setCurrentAnswer = (e) => {
 		setAnswers([{
-			currentAnswer: e.target.id,
-			writeAnswer: [TestsList[currentQuestion].questions[0].writeOptionInex],
-			isWrite: e.target.id===TestsList[currentQuestion].questions[0].writeOptionInex.toString(),
+			currentQuestion: TestsList[currentQuestion].questions[0].questionText,
+			currentAnswer: [...e.target.id],
+			writeAnswer: [TestsList[currentQuestion].questions[0].writeOptionInex.join(', ')],
+		//	isWrite: e.target.id==TestsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
-	
 	}
+
+
 	useEffect(() => {	
 		console.log(answers);
-	}, [answers]);
-
+		console.log(totalAnswer);
+	}, [answers, totalAnswer]);
 
 	return (
 		<div className='test-page'>
@@ -56,7 +84,7 @@ const TestComponent = () => {
 						.map((answer, index) => {
 							return (
 								<li key={index} className='answer'>
-								<input type="checkbox" id={index}/>
+								<input type="checkbox" id={index} onChange={(e) => handleChecked(e, index)}/>
 								<label htmlFor={index}>{answer}</label>
 								</li>
 							)
