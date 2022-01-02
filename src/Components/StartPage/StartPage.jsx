@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './StartPage.css';
+
 const StartPage = () => {
 	return (
 			<div className=''>
@@ -21,9 +22,7 @@ const StartPage = () => {
 							Add your question here!
 						</div>
 					</div>
-					
-				</main>
-				
+				</main>	
 		</div>
 	)
 }

@@ -68,7 +68,7 @@ const TestComponent = () => {
 				
 				<div className='test-card'>
 					<h3>{TestsList[currentQuestion].testName}</h3>
-					<h4>{TestsList[currentQuestion].questions[0].questionText}</h4>
+					<h4>{TestsList[currentQuestion].questions.questionText}</h4>
 					<ul className='questionsList'>
 						{TestsList[currentQuestion].questions[0].options
 						.filter(() => TestsList[currentQuestion].questions[0].writeOptionInex.length===1)
