@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './TestComponent.css';
 import TestsList from './TestList';
 
 const TestComponent = () => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [answers, setAnswers] = useState([{}]);
+	const [answers, setAnswers] = useState([]);
 	
 
 	function toNext()  {
-
 		if (currentQuestion >= TestsList.length-1) {
 			console.log('The end!')
-		} else
+		} else {
 			setCurrentQuestion(currentQuestion + 1);
+		}
+
 	}
 	const setCurrentAnswer = (e) => {
 		setAnswers([{
 			currentAnswer: e.target.id,
-			writeAnswer: TestsList[currentQuestion].questions[0].writeOptionInex,
+			writeAnswer: [TestsList[currentQuestion].questions[0].writeOptionInex],
 			isWrite: e.target.id===TestsList[currentQuestion].questions[0].writeOptionInex.toString(),
-		}]);	
-		// console.log(answers.currentAnswer === answers.writeAnswer)
-		// console.log(TestsList[currentQuestion].questions[0].writeOptionInex)
-		console.log(answers[0].isWrite);
+		}]);
+	
 	}
+	useEffect(() => {	
+		console.log(answers);
+	}, [answers]);
 
 
 	return (
@@ -37,33 +39,29 @@ const TestComponent = () => {
 				
 				<div className='test-card'>
 					<h3>{TestsList[currentQuestion].testName}</h3>
-					{TestsList[currentQuestion].questions.map((quest) => {
-						return (
-							<div key={quest.questionId}>
-								<h4>{quest.questionText}</h4>
-								<ul className='questionsList'>
-									{quest.options.filter(() => quest.writeOptionInex.length===1)
-									.map((answer, index) => {
-										return (
-											<li key={index} className='answer'>
-												<input type="radio" id={index} name='radio' onChange={setCurrentAnswer}/>
-												<label htmlFor={index}>{answer}</label>
-											</li>
-										)
-									})}
-									{quest.options.filter(() => quest.writeOptionInex.length>1)
-									.map((answer, index) => {
-										return (
-											<li key={index} className='answer'>
-											<input type="checkbox" id={index}/>
-											<label htmlFor={index}>{answer}</label>
-											</li>
-										)
-									})}
-								</ul>
-							</div>
-						)
-					})}
+					<h4>{TestsList[currentQuestion].questions[0].questionText}</h4>
+					<ul className='questionsList'>
+						{TestsList[currentQuestion].questions[0].options
+						.filter(() => TestsList[currentQuestion].questions[0].writeOptionInex.length===1)
+						.map((answer, index) => {
+							return (
+								<li key={index} className='answer'>
+									<input type="radio" id={index} name='radio' onChange={setCurrentAnswer} />
+									<label htmlFor={index}>{answer}</label>
+								</li>
+							)
+						})}
+						{TestsList[currentQuestion].questions[0].options
+						.filter(() => TestsList[currentQuestion].questions[0].writeOptionInex.length>1)
+						.map((answer, index) => {
+							return (
+								<li key={index} className='answer'>
+								<input type="checkbox" id={index}/>
+								<label htmlFor={index}>{answer}</label>
+								</li>
+							)
+						})}
+					</ul>
 				</div>
 
 				<div className='test-timer'>
