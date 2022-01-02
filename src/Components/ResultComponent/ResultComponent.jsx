@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from "react-router-dom";
-import TestsList from '../TestComponent/TestList';
+//import TestsList from '../TestComponent/TestList';
 
 const ResultComponent = () => {
     const location = useLocation();
@@ -21,7 +21,6 @@ const ResultComponent = () => {
                         <h4>Your answer:</h4>
                         <div>{el[0].currentAnswer}</div>
                        </div>
-                      
                    ) 
                 })}
             </div>
