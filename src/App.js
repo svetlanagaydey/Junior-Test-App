@@ -1,11 +1,13 @@
-import TestComponent from './Components/TestComponent/TestComponent';
-function App() {
-  return (
-    <div>
-      <h1>Junior Test Application</h1>
-      <TestComponent />
-    </div>
+import React from 'react';
+class App extends React.Component {
+  render () {
+    return (
+
+        <div>
+         
+        </div>
   );
+    }
 }
 
 export default App;

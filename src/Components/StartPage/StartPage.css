@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.addQuestion {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    border: 1px solid green;
+    size: cover;
+}
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+.main-container {
+    display: flex;
+    justify-content: space-between;
+}

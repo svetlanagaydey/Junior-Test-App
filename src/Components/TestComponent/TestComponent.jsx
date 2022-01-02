@@ -36,8 +36,7 @@ const TestComponent = () => {
 				const temp = [...totalAnswer];
 				temp.push(answers);
 				setTotalAnswer(temp);
-				// console.log('The end!');
-				// console.log(totalAnswer);
+				// console.log('The end!')
 			} 
 
 	}
@@ -53,8 +52,10 @@ const TestComponent = () => {
 
 	useEffect(() => {	
 		console.log(answers);
-		console.log(totalAnswer);
-	}, [answers, totalAnswer]);
+	}, [answers]);
+	useEffect(() => {	
+		if (totalAnswer.length===TestsList.length) console.log(totalAnswer);
+	}, [totalAnswer]);
 
 	return (
 		<div className='test-page'>
