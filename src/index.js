@@ -6,6 +6,7 @@ import './index.css';
 import StartPage from './Components/StartPage/StartPage';
 import TestComponent from './Components/TestComponent/TestComponent';
 import Hystory from './Components/Hystory/Hystory';
+import ResultComponent from './Components/ResultComponent/ResultComponent';
 
 ReactDOM.render( (
   <BrowserRouter >
@@ -13,6 +14,7 @@ ReactDOM.render( (
       <Route path="/" exact component={StartPage}/>
       <Route path="/topic1" component={TestComponent}/>
       <Route path="/hystory" component={Hystory} />
+      <Route path="/result" component={ResultComponent} />
     </div>
     
   </BrowserRouter>

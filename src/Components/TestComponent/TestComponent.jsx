@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 import './TestComponent.css';
 import TestsList from './TestList';
 
@@ -23,7 +24,6 @@ const TestComponent = () => {
 			writeAnswer: TestsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
   }
-	
 
 	function toNext()  {
 			if (currentQuestion < TestsList.length-1) {
@@ -49,7 +49,6 @@ const TestComponent = () => {
 		}]);
 	}
 
-
 	useEffect(() => {	
 		console.log(answers);
 	}, [answers]);
@@ -57,6 +56,13 @@ const TestComponent = () => {
 		if (totalAnswer.length===TestsList.length) console.log(totalAnswer);
 	}, [totalAnswer]);
 
+  // const submit = () => {
+  //   toNext();
+  //   console.log(totalAnswer);
+  //   return (<Link to='/result' >SUBMIT</Link> )
+
+  //  //return <Link to="/result" result={totalAnswer}/>
+  // }
 	return (
 		<div className='test-page'>
 			<h2>React Test</h2>
@@ -97,9 +103,15 @@ const TestComponent = () => {
 						<span>Timer:</span>
 						<span>$ : $</span>
 				</div>
-				<div className='next-question' onClick={toNext}>
+        <div className='next-question' onClick={toNext}>
 						<span>Next</span>
-				</div>
+        </div>
+        <Link to={{
+          pathname: "/result",
+          state: {totalAnswer},
+        }}>Submit</Link>
+        
+				
 			</div>
 		</div>
 	)
