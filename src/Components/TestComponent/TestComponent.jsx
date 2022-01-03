@@ -7,7 +7,8 @@ const TestComponent = () => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [answers, setAnswers] = useState([]);
 	const [checked, setChecked] = useState([]);
-	const [totalAnswer, setTotalAnswer] = useState([]);
+  const [totalAnswer, setTotalAnswer] = useState([]);
+  localStorage.setItem('total', JSON.stringify(totalAnswer));
 
 	const handleChecked = (e) => {
     let prev = checked;
@@ -56,13 +57,6 @@ const TestComponent = () => {
 		if (totalAnswer.length===TestsList.length) console.log(totalAnswer);
 	}, [totalAnswer]);
 
-  // const submit = () => {
-  //   toNext();
-  //   console.log(totalAnswer);
-  //   return (<Link to='/result' >SUBMIT</Link> )
-
-  //  //return <Link to="/result" result={totalAnswer}/>
-  // }
 	return (
 		<div className='test-page'>
 			<h2>React Test</h2>
@@ -74,7 +68,7 @@ const TestComponent = () => {
 				
 				<div className='test-card'>
 					<h3>{TestsList[currentQuestion].testName}</h3>
-					<h4>{TestsList[currentQuestion].questions.questionText}</h4>
+					<h4>{TestsList[currentQuestion].questions[0].questionText}</h4>
 					<ul className='questionsList'>
 						{TestsList[currentQuestion].questions[0].options
 						.filter(() => TestsList[currentQuestion].questions[0].writeOptionInex.length===1)
@@ -110,8 +104,6 @@ const TestComponent = () => {
           pathname: "/result",
           state: {totalAnswer},
         }}>Submit</Link>
-        
-				
 			</div>
 		</div>
 	)

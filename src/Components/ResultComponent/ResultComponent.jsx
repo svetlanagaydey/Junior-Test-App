@@ -5,13 +5,16 @@ import { useLocation } from "react-router-dom";
 const ResultComponent = () => {
 	const location = useLocation();
 	const result = location.state;
+	const totalShow = localStorage.getItem('total');
+	console.log(JSON.parse(totalShow));
+
 
 	function total(arr) {
 		let count = 0;
 		for (let i=0; i < arr.length; i++) {
 			if (arr[i][0].currentAnswer.toString()===arr[i][0].writeAnswer.toString()) {
-				console.log('+')
-				count++;
+					console.log('+')
+					count++;
 			}
 		}
 		return count

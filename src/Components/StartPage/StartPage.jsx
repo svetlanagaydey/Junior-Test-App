@@ -18,9 +18,12 @@ const StartPage = () => {
 					</ul>
 					<div className="main-content">
 						<h1>Start Page</h1>
-						<div className="addQuestion">
-							Add your question here!
-						</div>
+						<Link to="/users-questions">
+							<div className="addQuestion">
+								Questions from the users!
+							</div>
+						</Link>
+						
 					</div>
 				</main>	
 		</div>
