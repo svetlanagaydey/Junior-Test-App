@@ -44,7 +44,7 @@ const TestComponent = () => {
 		setAnswers([{
 			currentQuestion: TestsList[currentQuestion].questions[0].questionText,
 			currentAnswer: [...e.target.id],
-			writeAnswer: [TestsList[currentQuestion].questions[0].writeOptionInex.join(', ')],
+			writeAnswer: [TestsList[currentQuestion].questions[0].writeOptionInex],
 		//	isWrite: e.target.id==TestsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
 	}
