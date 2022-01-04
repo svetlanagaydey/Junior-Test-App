@@ -4,6 +4,10 @@ import './StartPage.css';
 import mainImg from '../../Assets/Images/mainImg.png'
 
 const StartPage = () => {
+	const setLocalTopic = (e) => {
+		console.log(e.target.text)
+		localStorage.setItem('topic' , e.target.text);
+	}
 	return (
 			<div className='container'>
 				<header className='header'>
@@ -16,14 +20,12 @@ const StartPage = () => {
 				</header>
 				<main className="main-container">
 					<ul className="topics-list">
-						<li className="topic-item"><Link to="/topic1">Topic1</Link></li>
+						<li className="topic-item" ><Link to="/test-start" onClick={setLocalTopic} value='HTML'>HTML</Link></li>
 						<li className="topic-item"><Link to="/topic2">Topic2</Link></li>
 						<li className="topic-item"><Link to="/topic3">Topic3</Link></li>
 						<li className="topic-item"><Link to="/topic4">Topic4</Link></li>
 					</ul>
 					<div className="main-content">
-						
-					
 						<h1>Test your knowledge <br />
 							Press topic to start test
 						</h1>

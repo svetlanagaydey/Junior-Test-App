@@ -5,6 +5,7 @@ import TestComponent from './Components/TestComponent/TestComponent';
 import Hystory from './Components/Hystory/Hystory';
 import ResultComponent from './Components/ResultComponent/ResultComponent';
 import AddQuestionPage from './Components/AddQuestionPage/AddQuestionPage';
+import StartTestPage from './Components/StartTestPage/StartTestPage'
 class App extends React.Component {
   render () {
     return (
@@ -16,6 +17,7 @@ class App extends React.Component {
         <Route path="/hystory" component={Hystory} />
         <Route path="/result" component={ResultComponent} />
         <Route path="/users-questions" component={AddQuestionPage} />
+        <Route path="/test-start" component={StartTestPage} />
       </div>
       
     </BrowserRouter>

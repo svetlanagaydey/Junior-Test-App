@@ -68,12 +68,18 @@ class AddQuestionPage extends React.Component {
   render() {
     let datas = this.state.datas;
     return (
-      <div className="add_container">
-        <h2>Submit you question here!</h2>
+      <div className="container">
+        
         <form ref="myForm" className="myForm">
+          <fieldset>
+          <legend>
+            <h2 className="form ">Submit you question here!</h2>
+          </legend>
           <input type="text" ref="question" placeholder="Your question" className="formField" />
           <input type="text" ref="answer" placeholder="Answer to the question" className="formField" />
           <button onClick={(e)=>this.submitQuestion(e)} className="myButton">SUBMIT </button>
+          </fieldset>
+          
         </form>
         <div>
           {datas.map((data, i) =>

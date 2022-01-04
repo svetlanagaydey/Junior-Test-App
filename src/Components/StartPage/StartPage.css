@@ -4,10 +4,6 @@
     background-color: white;
     padding-bottom: 5vh;
 }
-h1 {
-    color: rgb(36, 36, 123);
-}
-
 .header {
     height: 12vh;
     width: 100%;
@@ -24,6 +20,9 @@ h1 {
 }
 .header_rigth-item {
     margin-left: 3vw;
+}
+h1 {
+    color: rgb(36, 36, 123);
 }
 .add-question_link {
     display: inline-block;
@@ -62,6 +61,7 @@ h1 {
 .addQuestion {
     width: 90%;
     text-align: center;
+    
     border: 1px dotted rgb(36, 36, 123);
     background-color:  rgb(36, 36, 123);
     color: white;

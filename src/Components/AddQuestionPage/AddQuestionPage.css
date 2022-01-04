@@ -1,22 +1,27 @@
 .add_container h2{
     color:  rgb(36, 36, 123);
 }
-.add_container {
-    padding: 10vw;
-    background-color:rgb(237, 237, 240);
-    
+.container {
+    box-sizing: border-box;
 }
 .myForm{
-    width: 100%;
+    
+    width: 90%;
     background-color: white;
-    border: 1px solid  rgb(36, 36, 123);
+    margin: 30px;
     border-radius: 5px;
-    padding: 20px;
+    padding: 30px;
+    
 }
+fieldset {
+    border: 1px solid rgb(36, 36, 123);
+ }
+
 .formField{
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    font-size: 3vmin;
+    padding: 22px 28px;
+    margin: 30px 0;
     display: block;
     border: none;
     border-radius: 6px;
@@ -24,17 +29,18 @@
     background-color: rgb(237, 237, 240);
 }
 .formField:focus {
-    outline: 1px dotted rgb(84, 84, 189);
+    outline: 1px dotted rgb(36, 36, 123);
 }
 .myButton {
-    width: 50%;
-    height: 50px;
+    width: 40%;
     line-height: 50px;
-    margin: 0 auto;
+    font-size: 3vmin;
+    font-family: 'Marmelad', sans-serif;
     background-color: rgb(36, 36, 123);
     border: 1px solid lightgray;
     color: white;
-    margin: 8px 0;
+    margin-bottom: 20px;
+    padding: 22px 28px;
     border-radius: 6px;
     cursor: pointer;
     transition: 0.6s ease-in-out;
