@@ -1,28 +1,42 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './StartPage.css';
+import mainImg from '../../Assets/Images/mainImg.png'
 
 const StartPage = () => {
 	return (
-			<div className=''>
+			<div className='container'>
 				<header className='header'>
-					<Link to="/">To Main</Link>
-					<Link to="/hystory"> To Hystory</Link>
+					<Link to="/" className='toMain'>To Main</Link>
+					<ul className="header_rigth-nav">
+						<Link to="/hystory"> To Hystory</Link>
+						<Link to="/users-questions" className="header_rigth-item"> To Questions</Link>
+					</ul>
+					
 				</header>
 				<main className="main-container">
-					<ul>
-						<li><Link to="/topic1">Topic1</Link></li>
-						{/* <li><Link to="/topic2">Topic2</Link></li>
-						<li><Link to="/topic3">Topic3</Link></li>
-						<li><Link to="/topic4">Topic4</Link></li> */}
+					<ul className="topics-list">
+						<li className="topic-item"><Link to="/topic1">Topic1</Link></li>
+						<li className="topic-item"><Link to="/topic2">Topic2</Link></li>
+						<li className="topic-item"><Link to="/topic3">Topic3</Link></li>
+						<li className="topic-item"><Link to="/topic4">Topic4</Link></li>
 					</ul>
 					<div className="main-content">
-						<h1>Start Page</h1>
-						<Link to="/users-questions">
-							<div className="addQuestion">
-								Questions from the users!
-							</div>
-						</Link>
+						
+					
+						<h1>Test your knowledge <br />
+							Press topic to start test
+						</h1>
+						<div className="main_img-link">
+							<img src={mainImg}  className="main_img" alt=""/>	
+							<Link to="/users-questions" className="add-question_link">
+								<div className="addQuestion">
+									<p>Questions from the users!</p>
+									<div className='question-icon'>?</div>
+								</div>
+							</Link>
+						</div>
+						
 						
 					</div>
 				</main>	

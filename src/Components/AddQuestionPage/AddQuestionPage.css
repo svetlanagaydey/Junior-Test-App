@@ -1,9 +1,10 @@
-.add_containter h2{
+.add_container h2{
     color:  rgb(36, 36, 123);
 }
-.add_containter {
+.add_container {
     padding: 10vw;
-    background-color:rgb(229, 229, 232);
+    background-color:rgb(237, 237, 240);
+    
 }
 .myForm{
     width: 100%;
@@ -20,12 +21,12 @@
     border: none;
     border-radius: 6px;
     box-sizing: border-box;
-    background-color: rgb(229, 229, 232);
+    background-color: rgb(237, 237, 240);
 }
 .formField:focus {
     outline: 1px dotted rgb(84, 84, 189);
 }
-  .myButton {
+.myButton {
     width: 50%;
     height: 50px;
     line-height: 50px;
@@ -37,21 +38,21 @@
     border-radius: 6px;
     cursor: pointer;
     transition: 0.6s ease-in-out;
-  }
+}
   
-  .myButton:hover {
+.myButton:hover {
     color: white;
     border-color:  rgb(36, 36, 123);
     opacity: 80%;
     font-size: 20px;
-  }
+}
   
-  .myList{
+.myList{
     list-style: none;
     margin: 3vh;
-  }
+}
   
-  .myListButton{
+.myListButton{
     display: inline-block;
     height: 30px;
     padding: 0 10px;
@@ -61,4 +62,9 @@
     background-color:  white;
     color: rgb(36, 36, 123);
     margin: 0 5px;
-  }
+}
+.myListButton:hover {
+    background-color:  rgb(36, 36, 123);
+    color: white;
+    border-color: transparent;
+}

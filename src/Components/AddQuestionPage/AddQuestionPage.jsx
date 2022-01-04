@@ -2,9 +2,7 @@
 import React from 'react';
 import './AddQuestionPage.css';
 
-
 class AddQuestionPage extends React.Component {
-
 	state={
 		act: 0,
 		index: '',
@@ -70,7 +68,7 @@ class AddQuestionPage extends React.Component {
   render() {
     let datas = this.state.datas;
     return (
-      <div className="add_containter">
+      <div className="add_container">
         <h2>Submit you question here!</h2>
         <form ref="myForm" className="myForm">
           <input type="text" ref="question" placeholder="Your question" className="formField" />
