@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './TestComponent.css';
 import TestsList from './TestList';
 
+
 const TestComponent = () => {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -66,16 +67,23 @@ const TestComponent = () => {
 	}, [totalAnswer]);
 
 	return (
-		<div className='test-page'>
-			<h2>{currentTopic} Test</h2>
+		<div className='container test-page'>
+			 <header className='header'>
+                <Link to="/" className='toMain'>To Main</Link>
+                <ul className="header_rigth-nav">
+                    <Link to="/hystory"> To Hystory</Link>
+                    <Link to="/users-questions" className="header_rigth-item"> To Questions</Link>
+                </ul>
+            </header>
+			<h2>{currentTopic} Test started</h2>
+			<div className='progress-timer'>
+				<span className='test-progress'>Progress {currentQuestion+1} from {questionsList.length}</span>
+				<span className='test-timer'>Timer $ : $</span>
+			</div>
 			<div className='test-content'>
-				<div className='test-progress'>
-						<span>Progress</span>
-						<span>{currentQuestion+1} from {questionsList.length}</span>
-				</div>
-				
+				<div className='prev-question'></div>
 				<div className='test-card'>
-					<h3>{questionsList[currentQuestion].questions[0].questionText}</h3>
+					<h3 className='card-qwestion'>{questionsList[currentQuestion].questions[0].questionText}</h3>
 					<ul className='questionsList'>
 						{questionsList[currentQuestion].questions[0].options
 						.filter(() => questionsList[currentQuestion].questions[0].writeOptionInex.length===1)
@@ -99,19 +107,15 @@ const TestComponent = () => {
 						})}
 					</ul>
 				</div>
-
-				<div className='test-timer'>
-						<span>Timer:</span>
-						<span>$ : $</span>
-				</div>
-        <div className='next-question' onClick={toNext}>
-						<span>Next</span>
-        </div>
-        <Link to={{
-          pathname: "/result",
-          state: {totalAnswer},
-        }}>Submit</Link>
+				<div className='next-question' onClick={toNext}></div>
+				<Link to={{
+					pathname: "/result",
+					state: {totalAnswer},
+					}} className="submit-button" >
+					Submit
+				</Link>
 			</div>
+			
 		</div>
 	)
 }

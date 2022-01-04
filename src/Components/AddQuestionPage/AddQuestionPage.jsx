@@ -1,6 +1,7 @@
 
 import React from 'react';
 import './AddQuestionPage.css';
+import question from '../../Assets/Images/question.png'
 
 class AddQuestionPage extends React.Component {
 	state={
@@ -81,6 +82,7 @@ class AddQuestionPage extends React.Component {
           </fieldset>
           
         </form>
+        <img src={question} className="question-img" alt=""/>
         <div>
           {datas.map((data, i) =>
             <li key={i} className="myList">
