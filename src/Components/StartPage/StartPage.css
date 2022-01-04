@@ -61,7 +61,6 @@ h1 {
 .addQuestion {
     width: 90%;
     text-align: center;
-    
     border: 1px dotted rgb(36, 36, 123);
     background-color:  rgb(36, 36, 123);
     color: white;
@@ -70,7 +69,7 @@ h1 {
     display: block;
     padding: 20px;
     float: right;
-    opacity: 90%;
+    /* opacity: 90%; */
     
 }
 .add-question_link {

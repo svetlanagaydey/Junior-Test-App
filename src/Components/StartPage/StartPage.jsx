@@ -21,9 +21,9 @@ const StartPage = () => {
 				<main className="main-container">
 					<ul className="topics-list">
 						<li className="topic-item" ><Link to="/test-start" onClick={setLocalTopic} value='HTML'>HTML</Link></li>
-						<li className="topic-item"><Link to="/topic2">Topic2</Link></li>
-						<li className="topic-item"><Link to="/topic3">Topic3</Link></li>
-						<li className="topic-item"><Link to="/topic4">Topic4</Link></li>
+						<li className="topic-item"><Link to="/test-start" onClick={setLocalTopic} value='CSS'>CSS</Link></li>
+						<li className="topic-item"><Link to="/topic3" onClick={setLocalTopic} value='JavaScript'>JavaScript</Link></li>
+						<li className="topic-item"><Link to="/topic4" onClick={setLocalTopic} value='REACT'>REACT</Link></li>
 					</ul>
 					<div className="main-content">
 						<h1>Test your knowledge <br />

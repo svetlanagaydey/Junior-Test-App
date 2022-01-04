@@ -4,11 +4,19 @@ import './TestComponent.css';
 import TestsList from './TestList';
 
 const TestComponent = () => {
+
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [answers, setAnswers] = useState([]);
 	const [checked, setChecked] = useState([]);
-  const [totalAnswer, setTotalAnswer] = useState([]);
-  localStorage.setItem('total', JSON.stringify(totalAnswer));
+	const [totalAnswer, setTotalAnswer] = useState([]);
+	
+  //localStorage.setItem('total', JSON.stringify(totalAnswer));
+	const currentTopic = localStorage.getItem('topic');
+	let index = TestsList.findIndex(el => el.name === currentTopic);
+	const questionsObject = TestsList[index];
+	const questionsList = questionsObject.list;
+	console.log(questionsList)
+	
 
 	const handleChecked = (e) => {
     let prev = checked;
@@ -20,20 +28,20 @@ const TestComponent = () => {
     }
 		setChecked([...prev]);
 		setAnswers([{
-			currentQuestion: TestsList[currentQuestion].questions[0].questionText,
+			currentQuestion: questionsList[currentQuestion].questions[0].questionText,
 			currentAnswer: checked,
-			writeAnswer: TestsList[currentQuestion].questions[0].writeOptionInex,
+			writeAnswer: questionsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
   }
 
 	function toNext()  {
-			if (currentQuestion < TestsList.length-1) {
+			if (currentQuestion < questionsList.length-1) {
 				const temp = [...totalAnswer];
 				temp.push(answers);
 				setTotalAnswer(temp);
 				setCurrentQuestion(currentQuestion + 1);
 			}
-			if ((currentQuestion === TestsList.length-1)&&(totalAnswer.length!==TestsList.length)) {
+			if ((currentQuestion === questionsList.length-1)&&(totalAnswer.length!==questionsList.length)) {
 				const temp = [...totalAnswer];
 				temp.push(answers);
 				setTotalAnswer(temp);
@@ -43,10 +51,10 @@ const TestComponent = () => {
 	}
 	const setCurrentAnswer = (e) => {
 		setAnswers([{
-			currentQuestion: TestsList[currentQuestion].questions[0].questionText,
+			currentQuestion: questionsList[currentQuestion].questions[0].questionText,
 			currentAnswer: [...e.target.id],
-			writeAnswer: [TestsList[currentQuestion].questions[0].writeOptionInex],
-		//	isWrite: e.target.id==TestsList[currentQuestion].questions[0].writeOptionInex,
+			writeAnswer: [questionsList[currentQuestion].questions[0].writeOptionInex],
+		//	isWrite: e.target.id==questionsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
 	}
 
@@ -54,24 +62,23 @@ const TestComponent = () => {
 		console.log(answers);
 	}, [answers]);
 	useEffect(() => {	
-		if (totalAnswer.length===TestsList.length) console.log(totalAnswer);
+		//if (totalAnswer.length===questionsList.length) console.log(totalAnswer);
 	}, [totalAnswer]);
 
 	return (
 		<div className='test-page'>
-			<h2>React Test</h2>
+			<h2>{currentTopic} Test</h2>
 			<div className='test-content'>
 				<div className='test-progress'>
 						<span>Progress</span>
-						<span>{currentQuestion+1} from {TestsList.length}</span>
+						<span>{currentQuestion+1} from {questionsList.length}</span>
 				</div>
 				
 				<div className='test-card'>
-					<h3>{TestsList[currentQuestion].testName}</h3>
-					<h4>{TestsList[currentQuestion].questions[0].questionText}</h4>
+					<h3>{questionsList[currentQuestion].questions[0].questionText}</h3>
 					<ul className='questionsList'>
-						{TestsList[currentQuestion].questions[0].options
-						.filter(() => TestsList[currentQuestion].questions[0].writeOptionInex.length===1)
+						{questionsList[currentQuestion].questions[0].options
+						.filter(() => questionsList[currentQuestion].questions[0].writeOptionInex.length===1)
 						.map((answer, index) => {
 							return (
 								<li key={index} className='answer'>
@@ -80,8 +87,8 @@ const TestComponent = () => {
 								</li>
 							)
 						})}
-						{TestsList[currentQuestion].questions[0].options
-						.filter(() => TestsList[currentQuestion].questions[0].writeOptionInex.length>1)
+						{questionsList[currentQuestion].questions[0].options
+						.filter(() => questionsList[currentQuestion].questions[0].writeOptionInex.length>1)
 						.map((answer, index) => {
 							return (
 								<li key={index} className='answer'>

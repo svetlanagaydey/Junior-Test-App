@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-//import './StartPage.css';
+import './StartTestPage.css';
+import start from '../../Assets/Images/start.png'
 
 
 const StartTestPage = () => {
     return (
-        <div>
+        <div className="container">
              <header className='header'>
                 <Link to="/" className='toMain'>To Main</Link>
                 <ul className="header_rigth-nav">
@@ -13,8 +14,13 @@ const StartTestPage = () => {
                     <Link to="/users-questions" className="header_rigth-item"> To Questions</Link>
                 </ul>
             </header>
-            <main className="main-container">
-                <Link to="/topic1"> START NOW</Link>
+            <main className="main-start">
+                 <h2>You choose topic {localStorage.getItem('topic')}</h2>
+
+                <Link to="/topic1" >
+                    <span className="start-button"> START NOW</span>
+                </Link>
+                <img src={start} alt=""/>
             </main>
         </div>
        

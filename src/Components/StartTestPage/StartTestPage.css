@@ -1,0 +1,15 @@
+
+.main-start {
+	width: 100%;
+  text-align: center;
+}
+.start-button {
+	display: inline-block;
+	width: 30vw;
+	height: 20vh;
+	line-height: 20vh;
+	background-color: rgb(36, 36, 123);
+	border-radius: 15px;
+	color: white;
+	font-family: 'Marmelad', sans-serif;
+}
