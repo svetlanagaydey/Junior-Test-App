@@ -78,7 +78,7 @@ class AddQuestionPage extends React.Component {
           </legend>
           <input type="text" ref="question" placeholder="Your question" className="formField" />
           <input type="text" ref="answer" placeholder="Answer to the question" className="formField" />
-          <button onClick={(e)=>this.submitQuestion(e)} className="myButton">SUBMIT </button>
+          <button onClick={(e)=>this.submitQuestion(e)} className="myButton globalBut">SUBMIT </button>
           </fieldset>
           
         </form>

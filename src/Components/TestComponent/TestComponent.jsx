@@ -90,8 +90,8 @@ const TestComponent = () => {
 						.map((answer, index) => {
 							return (
 								<li key={index} className='answer'>
-									<input type="radio" id={index} name='radio' onChange={setCurrentAnswer} />
-									<label htmlFor={index}>{answer}</label>
+									<input type="radio" id={index} name='radio' onChange={setCurrentAnswer} className='radio' />
+									<label htmlFor={index} className="input">{answer}</label>
 								</li>
 							)
 						})}
@@ -101,7 +101,7 @@ const TestComponent = () => {
 							return (
 								<li key={index} className='answer'>
 								<input type="checkbox" id={index} onChange={(e) => handleChecked(e, index)}/>
-								<label htmlFor={index}>{answer}</label>
+								<label htmlFor={index} className="input">{answer}</label>
 								</li>
 							)
 						})}

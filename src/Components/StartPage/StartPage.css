@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 .container {
     max-width: 1800px;
     margin: 0 auto;
@@ -38,30 +39,19 @@ h1 {
 .main-content {
     padding: 0 6vw;
 }
-.topic-item {
-    height: 12vh;
-    border: 1px solid transparent;
-    border-bottom: 1px solid lightgray;
-    line-height: 12vh;
-    padding-left: 3vw;
-}
-.topic-item:hover {
-    border: 1px dotted rgb(36, 36, 123);
-}
 .topics-list {
     width: 30%;
     padding-left: 3vw;
 }
-/* .main_img-link {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-} */
+.topic-item {
+    height: 12vh;
+    border: 1px solid transparent;
+    /* border-bottom: 1px solid lightgray; */
+    line-height: 12vh;
+}
 .addQuestion {
     width: 100%;
     text-align: center;
-    border: 1px dotted rgb(36, 36, 123);
     background-color:  rgb(36, 36, 123);
     color: white;
     border-radius: 16px;
@@ -84,4 +74,68 @@ h1 {
     border-radius: 50%;
     color: rgb(36, 36, 123);
     background-color: white;
+}
+
+/* hovers and animation */
+.header_rigth-nav li a:hover{
+    color: #f1afab;
+}
+
+
+.topics-list {
+  /* font-family: 'Raleway', Arial, sans-serif; */
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.topics-list * {
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.topics-list li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0 2.2em;
+  overflow: hidden;
+}
+.topics-list a {
+  padding: 0 0.2em 0 0.5em;
+  
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+  margin: 0;
+  text-decoration: none;
+}
+.topics-list a:before,
+.topics-list a:after {
+  position: absolute;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.topics-list a:before {
+  left: 100%;
+  display: block;
+  width: 3px;
+  height: 100%;
+  content: "";
+  background-color: #f1afab;
+}
+.topics-list a:after {
+  padding: 0 0.2em 0 0.5em;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  content: attr(data-hover);
+  color: #f1afab;
+  white-space: nowrap;
+}
+.topics-list li:hover a,
+.topics-list .current a {
+  transform: translateX(-100%);
+}
+/* Demo purposes only */
+body {
+  background-color: #212121;
 }

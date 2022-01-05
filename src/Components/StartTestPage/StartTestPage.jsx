@@ -17,8 +17,8 @@ const StartTestPage = () => {
             <main className="main-start">
                  <h2>You choose topic {localStorage.getItem('topic')}</h2>
 
-                <Link to="/topic1" >
-                    <span className="start-button"> START NOW</span>
+                <Link to="/topic1" className="start-button globalBut">
+                    <span> START NOW</span>
                 </Link>
                 <img src={start} alt=""/>
             </main>

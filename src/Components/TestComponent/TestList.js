@@ -19,7 +19,7 @@ const TestsList = [
 			questions: [
 				{
 					questionId: 1001,
-					questionText: 'Сhoose the second and fourth option',
+					questionText: 'Сhoose the second and fourth option. Choose all answers',
 					options: ['First', 'Second', 'Third', 'Fourth'],
 					writeOptionInex: [1, 3],
 				}

@@ -7,14 +7,17 @@
     list-style-type: none;
     padding: 8px;
     background-color: white;
-    border: 1px solid rgb(36, 36, 123);
+    border: 1px dotted rgb(36, 36, 123);
     border-radius: 15px;
     color: rgb(36, 36, 123);
 }
 .answer:not(:last-child) {
     margin-bottom: 20px;
 }
-
+.input {
+    display: block;
+    border-radius: 10px;
+}
 .test-content {
     width: 100%;
     padding: 0 7vw;
@@ -76,3 +79,27 @@
     font-size: 3vmax;
     border-radius: 15px;
 }
+
+/* radio fover  and checked */
+
+[type="radio"],
+[type="checkbox"] {
+    border: 0; 
+    clip: rect(0 0 0 0); 
+    height: 1px; margin: -1px; 
+    overflow: hidden; 
+    padding: 0; 
+    position: absolute; 
+    width: 1px;
+  }
+  li [type="radio"]:checked + .input,
+  li [type="checkbox"]:checked + .input {
+      background-color:  #f1afab;
+    
+  }
+  .answer:hover {
+    border: 1px solid rgb(36, 36, 123);
+  }
+  .input:hover {
+      background-color:  rgb(247, 247, 247);
+  }
