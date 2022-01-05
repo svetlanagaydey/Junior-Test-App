@@ -48,9 +48,9 @@ const TestsList = [
 			questions: [
 				{
 					questionId: 1200,
-					questionText: 'CSS What is the Capital of Great Britain',
-					options: ['London', 'Paris', 'Kyiv', 'Berlin'],
-					writeOptionInex: [0],
+					questionText: 'What does CSS stand for?',
+					options: ['Colorful Style Sheets', 'Computer Style Sheets', 'Creative Style Sheets', 'Cascading Style Sheets'],
+					writeOptionInex: [3],
 				}
 			]
 		},
@@ -60,9 +60,9 @@ const TestsList = [
 			questions: [
 				{
 					questionId: 1201,
-					questionText: 'CSS Сhoose the second and fourth option',
-					options: ['First', 'Second', 'Third', 'Fourth'],
-					writeOptionInex: [1, 3],
+					questionText: 'Where in an HTML document is the correct place to refer to an external style sheet?',
+					options: ['At the end of the document', 'In the <head> section', 'In the <body> section'],
+					writeOptionInex: [2],
 				}
 			]
 		}, 
@@ -72,9 +72,9 @@ const TestsList = [
 			questions: [
 				{
 					questionId: 1202,
-					questionText: 'CSS What is no food in the list?',
-					options: ['Tomato', 'Fish', 'Coca-Cola', 'Cucumber'],
-					writeOptionInex: [2],
+					questionText: 'Which CSS properties are used to make an element invisible?',
+					options: ['opacity: 100%;', 'display: none;', 'invisible: hidden;', 'opacity: 0'],
+					writeOptionInex: [1, 3],
 				}
 			]
 		},	

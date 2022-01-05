@@ -10,20 +10,19 @@ const TestComponent = () => {
 	const [answers, setAnswers] = useState([]);
 	const [checked, setChecked] = useState([]);
 	const [totalAnswer, setTotalAnswer] = useState([]);
-	const [seconds, setSeconds] = useState(70);
+	const [seconds, setSeconds] = useState(10);
 	
 	const currentTopic = localStorage.getItem('topic');
 	let index = TestsList.findIndex(el => el.name === currentTopic);
-	const questionsObject = TestsList[index];
-	const questionsList = questionsObject.list;
-	console.log(questionsList);
+	const questionsList = TestsList[index].list;
+
 	
     useEffect(() => {
         const interval = setInterval(() => {
             let temp = seconds - 1;
-            console.log(temp);
 			setSeconds(temp);
 		}, 1000);
+		if (seconds===0) clearInterval(interval)
 		return () => clearInterval(interval);
     }, [seconds]);
 
@@ -46,18 +45,29 @@ const TestComponent = () => {
 	function toNext()  {
 		if (currentQuestion < questionsList.length-1) {
 			const temp = [...totalAnswer];
-			temp.push(answers);
+			temp[currentQuestion] = answers;
 			setTotalAnswer(temp);
 			setCurrentQuestion(currentQuestion + 1);
+			console.log(totalAnswer);
 		}
 		if ((currentQuestion === questionsList.length-1)&&(totalAnswer.length!==questionsList.length)) {
 			const temp = [...totalAnswer];
 			temp.push(answers);
 			setTotalAnswer(temp);
 		} 
-
 	}
-	const setCurrentAnswer = (e) => {
+	function toPrev() {
+		if (currentQuestion!==0) {
+			setCurrentQuestion(currentQuestion - 1);
+			// const temp = [...totalAnswer];
+			// temp[currentQuestion-1] = answers;
+			// setTotalAnswer(temp);
+			console.log(answers);
+			console.log(currentQuestion);
+		}
+	}
+	
+	function setCurrentAnswer (e) {
 		setAnswers([{
 			currentQuestion: questionsList[currentQuestion].questions[0].questionText,
 			currentAnswer: [...e.target.id],
@@ -84,10 +94,10 @@ const TestComponent = () => {
 			<h2>{currentTopic} Test started</h2>
 			<div className='progress-timer'>
 				<span className='test-progress'>Progress {currentQuestion+1} from {questionsList.length}</span>
-	<span className='test-timer'> {min} : {format(sec)}</span>
+				<span className='test-timer'> {min} : {format(sec)}</span>
 			</div>
 			<div className='test-content'>
-				<div className='prev-question'></div>
+				<div className='prev-question' onClick={toPrev}></div>
 				<div className='test-card'>
 					<h3 className='card-qwestion'>{questionsList[currentQuestion].questions[0].questionText}</h3>
 					<ul className='questionsList'>
