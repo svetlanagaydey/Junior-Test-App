@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import './StartTestPage.css';
 import start from '../../Assets/Images/start.png'
-
 
 const StartTestPage = () => {
 
@@ -17,14 +15,12 @@ const StartTestPage = () => {
             </header>
             <main className="main-start">
                 <h2>You choose topic {localStorage.getItem('topic')}</h2>
-
                 <Link to="/topic1" className="start-button globalBut">
                     START NOW
                 </Link>
                 <img src={start} alt=""/>
             </main>
         </div>
-       
     )
 }
 export default StartTestPage;
