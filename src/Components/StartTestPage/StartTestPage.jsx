@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import './StartTestPage.css';
 import start from '../../Assets/Images/start.png'
 
 
 const StartTestPage = () => {
+
     return (
         <div className="container">
              <header className='header'>
@@ -15,10 +16,10 @@ const StartTestPage = () => {
                 </ul>
             </header>
             <main className="main-start">
-                 <h2>You choose topic {localStorage.getItem('topic')}</h2>
+                <h2>You choose topic {localStorage.getItem('topic')}</h2>
 
                 <Link to="/topic1" className="start-button globalBut">
-                    <span> START NOW</span>
+                    START NOW
                 </Link>
                 <img src={start} alt=""/>
             </main>

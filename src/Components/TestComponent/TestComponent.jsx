@@ -10,30 +10,38 @@ const TestComponent = () => {
 	const [answers, setAnswers] = useState([]);
 	const [checked, setChecked] = useState([]);
 	const [totalAnswer, setTotalAnswer] = useState([]);
+	const [seconds, setSeconds] = useState(70);
 	
-  //localStorage.setItem('total', JSON.stringify(totalAnswer));
 	const currentTopic = localStorage.getItem('topic');
 	let index = TestsList.findIndex(el => el.name === currentTopic);
 	const questionsObject = TestsList[index];
 	const questionsList = questionsObject.list;
-	console.log(questionsList)
+	console.log(questionsList);
 	
+    useEffect(() => {
+        const interval = setInterval(() => {
+            let temp = seconds - 1;
+            console.log(temp);
+			setSeconds(temp);
+		}, 1000);
+		return () => clearInterval(interval);
+    }, [seconds]);
 
 	const handleChecked = (e) => {
-    let prev = checked;
-    let itemIndex = prev.indexOf(e.target.id);
-    if (itemIndex !== -1) {
-      prev.splice(itemIndex, 1);
-    } else {
-      prev.push(e.target.id);
-    }
-		setChecked([...prev]);
-		setAnswers([{
-			currentQuestion: questionsList[currentQuestion].questions[0].questionText,
-			currentAnswer: checked,
-			writeAnswer: questionsList[currentQuestion].questions[0].writeOptionInex,
-		}]);
-  }
+		let prev = checked;
+		let itemIndex = prev.indexOf(e.target.id);
+		if (itemIndex !== -1) {
+			prev.splice(itemIndex, 1);
+		} else {
+			prev.push(e.target.id);
+		}
+			setChecked([...prev]);
+			setAnswers([{
+				currentQuestion: questionsList[currentQuestion].questions[0].questionText,
+				currentAnswer: checked,
+				writeAnswer: questionsList[currentQuestion].questions[0].writeOptionInex,
+			}]);
+	}
 
 	function toNext()  {
 		if (currentQuestion < questionsList.length-1) {
@@ -46,7 +54,6 @@ const TestComponent = () => {
 			const temp = [...totalAnswer];
 			temp.push(answers);
 			setTotalAnswer(temp);
-			// console.log('The end!')
 		} 
 
 	}
@@ -58,13 +65,12 @@ const TestComponent = () => {
 		//	isWrite: e.target.id==questionsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
 	}
-
-	useEffect(() => {	
-		console.log(answers);
-	}, [answers]);
-	useEffect(() => {	
-		//if (totalAnswer.length===questionsList.length) console.log(totalAnswer);
-	}, [totalAnswer]);
+	const sec = seconds % 60;
+	const min = Math.floor(seconds/60);
+	function format(num) {
+		if (num<10) return `0${num}`
+		else return num
+	}
 
 	return (
 		<div className='container test-page'>
@@ -78,7 +84,7 @@ const TestComponent = () => {
 			<h2>{currentTopic} Test started</h2>
 			<div className='progress-timer'>
 				<span className='test-progress'>Progress {currentQuestion+1} from {questionsList.length}</span>
-				<span className='test-timer'>Timer $ : $</span>
+	<span className='test-timer'> {min} : {format(sec)}</span>
 			</div>
 			<div className='test-content'>
 				<div className='prev-question'></div>
