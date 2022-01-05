@@ -68,3 +68,18 @@ fieldset {
     color: white;
     border-color: transparent;
 }
+.myList {
+    border-bottom: 1px dotted rgb(36, 36, 123);
+    padding-bottom: 3vmin;
+}
+.noteItem {
+    display: flex;
+    flex-direction: column;
+}
+.noteQuest {
+    
+}
+.noteAns {
+    padding-left: 20px;
+    color:  rgb(36, 36, 123);
+}
