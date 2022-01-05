@@ -86,7 +86,10 @@ class AddQuestionPage extends React.Component {
         <div>
           {datas.map((data, i) =>
             <li key={i} className="myList">
-              {i+1}. {data.question}, {data.answer}
+              <div>
+                <span> {i+1}. {data.question}</span>
+                <span>{data.answer}</span>
+              </div>
               <button onClick={()=>this.removeQuestion(i)} className="myListButton">DELETE </button>
               <button onClick={()=>this.editQuestion(i)} className="myListButton">EDIT </button>
             </li>
