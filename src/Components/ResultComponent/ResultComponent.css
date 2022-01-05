@@ -1,0 +1,15 @@
+.result-question {
+    text-align: start;
+}
+.write-answer h4,
+.user-answer {
+    color: rgb(36, 36, 123);
+    display: inline-block;
+    margin: 0;
+    padding-left: 3vw;
+}
+.resultScore {
+    font-size: 6vmin;
+    font-weight: bolder;
+    color:  rgb(43, 59, 235);
+}

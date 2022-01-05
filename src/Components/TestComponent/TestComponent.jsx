@@ -36,18 +36,18 @@ const TestComponent = () => {
   }
 
 	function toNext()  {
-			if (currentQuestion < questionsList.length-1) {
-				const temp = [...totalAnswer];
-				temp.push(answers);
-				setTotalAnswer(temp);
-				setCurrentQuestion(currentQuestion + 1);
-			}
-			if ((currentQuestion === questionsList.length-1)&&(totalAnswer.length!==questionsList.length)) {
-				const temp = [...totalAnswer];
-				temp.push(answers);
-				setTotalAnswer(temp);
-				// console.log('The end!')
-			} 
+		if (currentQuestion < questionsList.length-1) {
+			const temp = [...totalAnswer];
+			temp.push(answers);
+			setTotalAnswer(temp);
+			setCurrentQuestion(currentQuestion + 1);
+		}
+		if ((currentQuestion === questionsList.length-1)&&(totalAnswer.length!==questionsList.length)) {
+			const temp = [...totalAnswer];
+			temp.push(answers);
+			setTotalAnswer(temp);
+			// console.log('The end!')
+		} 
 
 	}
 	const setCurrentAnswer = (e) => {

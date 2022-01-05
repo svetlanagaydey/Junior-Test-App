@@ -29,15 +29,15 @@ const StartPage = () => {
 						<h1>Test your knowledge <br />
 							Press topic to start test
 						</h1>
-						<div className="main_img-link">
-							<img src={mainImg}  className="main_img" alt=""/>	
-							<Link to="/users-questions" className="add-question_link">
-								<div className="addQuestion">
-									<p>Questions from the users!</p>
-									<div className='question-icon'>?</div>
-								</div>
-							</Link>
-						</div>
+					
+						<img src={mainImg}  className="main_img" alt=""/>	
+						<Link to="/users-questions" className="add-question_link">
+							<div className="addQuestion">
+								<p>Submit your questions here!</p>
+								<div className='question-icon'>?</div>
+							</div>
+						</Link>
+						
 						
 						
 					</div>
