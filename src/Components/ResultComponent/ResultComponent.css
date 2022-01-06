@@ -11,8 +11,36 @@
     margin: 0;
     padding: 0 3vw;
 }
+.user-ans,
+    .write-answer {
+        padding-left: 10vw;
+    }
 .resultScore {
     font-size: 6vmin;
     font-weight: bolder;
     color:  rgb(43, 59, 235);
 }
+
+@media (max-width: 600px) {
+    .result-container h2 {
+        font-size: 30px;
+    } 
+    .resultScore {
+        font-size:32px;
+    }
+    .result-question {
+        font-size: 20px;
+    }
+    .write-answer h4,
+    .user-answer {
+        font-size: 20px;
+    }
+    .user-ans,
+    .write-answer {
+        padding-left: 40px;
+    }
+    .write-answer span,
+    .user-ans span {
+        font-size: 20px;
+    }
+ }

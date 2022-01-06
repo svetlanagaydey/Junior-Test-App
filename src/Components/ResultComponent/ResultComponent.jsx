@@ -44,7 +44,7 @@ const ResultComponent = () => {
 							<div className="write-answer">
 								<h4>Write answer:</h4><span>{answersArray[writeIndex]}</span>
 							</div>
-							<div>
+							<div className="user-ans">
 								<h4 className="user-answer" > Your answer:</h4><span>{answersArray[currentIndex]}</span>
 							</div>
 							

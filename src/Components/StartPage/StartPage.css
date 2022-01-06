@@ -139,3 +139,36 @@ h1 {
 body {
   background-color: #212121;
 }
+
+@media (max-width: 600px) {
+  .main-container {
+    flex-direction: column;
+    position: relative;
+  }
+  .topic-item {
+    height: 8vh;
+    border-bottom: 1px solid #f1afab;
+  }
+  .main_img {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 0;
+    right: 20px;
+  }
+  .question-icon {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 30px;
+  }
+  .addQuestion {
+    padding-top: 10px;
+  }
+  .addQuestion p{
+    font-size: 20px;
+  }
+  .topics-list a {
+    font-size: 25px;
+  }
+}

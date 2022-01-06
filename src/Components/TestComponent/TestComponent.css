@@ -103,3 +103,35 @@
   .input:hover {
       background-color:  rgb(247, 247, 247);
   }
+
+  @media (max-width: 600px) {
+    .test-page {
+        width: 100%;
+    }
+    .test-content {
+        width: 100%;
+    }
+    .test-page h2 {
+        font-size: 24px;
+    }
+    .test-progress {
+        font-size: 20px;
+    }
+    .test-timer {
+        padding: 0 10px;
+        font-size: 20px;
+    }
+    .prev-question, 
+    .next-question {
+        width: 50px;
+        height: 35px;
+    }
+    .test-card {
+        padding: 15px 10px;
+    }
+    .submit-button {
+        height: 7vmin;
+        line-height: 1vmin;
+        font-size: 30px;
+    }
+}

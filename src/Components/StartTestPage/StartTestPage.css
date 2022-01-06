@@ -14,3 +14,17 @@
 	font-family: 'Marmelad', sans-serif;
 	font-size: 5vmin;
 }
+@media (max-width: 600px) {
+	.main-start img {
+		width: 100%;
+	}
+	.main-start h2 {
+		font-size: 25px;
+	}
+	.start-button {
+		width: 90%;
+		font-size: 28px;
+		height: 140px;
+		line-height: 125px;
+	}
+}
