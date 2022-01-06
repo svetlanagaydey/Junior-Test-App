@@ -10,7 +10,7 @@ const TestComponent = () => {
 	const [answers, setAnswers] = useState([]);
 	const [checked, setChecked] = useState([]);
 	const [totalAnswer, setTotalAnswer] = useState([]);
-	const [seconds, setSeconds] = useState(10);
+	const [seconds, setSeconds] = useState(90);
 	
 	const currentTopic = localStorage.getItem('topic');
 	let index = TestsList.findIndex(el => el.name === currentTopic);
@@ -94,7 +94,7 @@ const TestComponent = () => {
 			<h2>{currentTopic} Test started</h2>
 			<div className='progress-timer'>
 				<span className='test-progress'>Progress {currentQuestion+1} from {questionsList.length}</span>
-				<span className='test-timer'> {min} : {format(sec)}</span>
+				<span className='test-timer'> {format(min)} : {format(sec)}</span>
 			</div>
 			<div className='test-content'>
 				<div className='prev-question' onClick={toPrev}></div>

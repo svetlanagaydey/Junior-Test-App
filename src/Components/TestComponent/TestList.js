@@ -73,7 +73,7 @@ const TestsList = [
 				{
 					questionId: 1202,
 					questionText: 'Which CSS properties are used to make an element invisible?',
-					options: ['opacity: 100%;', 'display: none;', 'invisible: hidden;', 'opacity: 0'],
+					options: ['opacity: 100%;', 'display: none;', 'invisible: hidden;', 'opacity: 0;'],
 					writeOptionInex: [1, 3],
 				}
 			]
