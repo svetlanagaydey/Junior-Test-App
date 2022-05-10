@@ -10,6 +10,7 @@ const ResultComponent = () => {
 	const currentTopic = localStorage.getItem('topic');
 	let index = TestsList.findIndex(el => el.name === currentTopic);
 	const questionsList = TestsList[index].list;
+  console.log(result);
 	
 	function total(arr) {
 		let count = 0;
@@ -33,21 +34,33 @@ const ResultComponent = () => {
 			<h2>Your result <span className="resultScore">{total(result.totalAnswer)}/{result.totalAnswer.length}</span></h2>
 			<div>
 				{result.totalAnswer.map((ans, index) => {
-					const writeIndex = ans[0].writeAnswer[0];
-					const currentIndex = ans[0].currentAnswer[0];
-					const answersArray = questionsList[index].questions[0].options;
-					// console.log(answersArray[writeIndex]);
+					const writeIndexesArray = ans[0].writeAnswer; //an array
+					const currentIndexesArray = ans[0].currentAnswer;
+					const answersArray = questionsList[index].questions[0].options; // перечень вопросов
+					// console.log(writeIndex);
 					// console.log(answersArray[currentIndex]);
 					return(
 						<div key={index}>
 							<h3 className="result-question">{index+1}. {ans[0].currentQuestion}</h3>
+
 							<div className="write-answer">
-								<h4>Write answer:</h4><span>{answersArray[writeIndex]}</span>
+								<h4>Write answer:</h4>
+                <div className='write-anwers__list'>
+                  {writeIndexesArray.map((answer) => {
+                    return <span key={answer}>{answersArray[answer]}</span>
+                  })}
+                </div>
 							</div>
+
 							<div className="user-ans">
-								<h4 className="user-answer" > Your answer:</h4><span>{answersArray[currentIndex]}</span>
+								<h4> Your answer:</h4>
+                <div className='user-ans__list'>
+                  {currentIndexesArray.map((answer) => {
+                    return <span key={answer}>{answersArray[answer]}</span>
+                  })}
+                </div>
 							</div>
-							
+
 						</div>
 					) 
 				})}

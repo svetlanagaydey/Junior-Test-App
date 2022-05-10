@@ -26,42 +26,57 @@ const TestComponent = () => {
 		return () => clearInterval(interval);
     }, [seconds]);
 
+	useEffect(() => {
+		setAnswers([{
+			currentQuestion: questionsList[currentQuestion+1].questions[0].questionText,
+			currentAnswer: [""],
+			writeAnswer: questionsList[currentQuestion].questions[0].writeOptionInex,
+		}]);
+    }, []);
+
 	const handleChecked = (e) => {
-		let prev = checked;
-		let itemIndex = prev.indexOf(e.target.id);
-		if (itemIndex !== -1) {
-			prev.splice(itemIndex, 1);
+		const checkedId = e.target.id;
+		let chackedArray = [];
+		console.log(answers[0].currentAnswer);
+		if (answers[0].currentAnswer[0] === "") {
+			chackedArray = [e.target.id];
 		} else {
-			prev.push(e.target.id);
+			chackedArray = [...answers[0].currentAnswer, checkedId ]
 		}
-			setChecked([...prev]);
-			setAnswers([{
-				currentQuestion: questionsList[currentQuestion].questions[0].questionText,
-				currentAnswer: checked,
-				writeAnswer: questionsList[currentQuestion].questions[0].writeOptionInex,
-			}]);
+		setAnswers([{
+			currentQuestion: questionsList[currentQuestion].questions[0].questionText,
+			currentAnswer: chackedArray,
+			writeAnswer: questionsList[currentQuestion].questions[0].writeOptionInex,
+		}]);
 	}
 
 	function toNext()  {
 		if (currentQuestion < questionsList.length-1) {
 			const temp = [...totalAnswer];
+			setAnswers([{
+				currentQuestion: questionsList[currentQuestion+1].questions[0].questionText,
+				currentAnswer: [""],
+				writeAnswer: questionsList[currentQuestion+1].questions[0].writeOptionInex,
+			}]);
 			temp[currentQuestion] = answers;
 			setTotalAnswer(temp);
 			setCurrentQuestion(currentQuestion + 1);
 			console.log(totalAnswer);
 		}
+		
 		if ((currentQuestion === questionsList.length-1)&&(totalAnswer.length!==questionsList.length)) {
 			const temp = [...totalAnswer];
 			temp.push(answers);
 			setTotalAnswer(temp);
+			console.log(totalAnswer);
 		} 
 	}
 	function toPrev() {
 		if (currentQuestion!==0) {
 			setCurrentQuestion(currentQuestion - 1);
-			// const temp = [...totalAnswer];
-			// temp[currentQuestion-1] = answers;
-			// setTotalAnswer(temp);
+			const temp = [...totalAnswer];
+			temp[currentQuestion-1] = answers;
+			setTotalAnswer(temp);
 			console.log(answers);
 			console.log(currentQuestion);
 		}
@@ -70,7 +85,7 @@ const TestComponent = () => {
 	function setCurrentAnswer (e) {
 		setAnswers([{
 			currentQuestion: questionsList[currentQuestion].questions[0].questionText,
-			currentAnswer: [...e.target.id],
+			currentAnswer: [...e.target.id] || '',
 			writeAnswer: [questionsList[currentQuestion].questions[0].writeOptionInex],
 		//	isWrite: e.target.id==questionsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
