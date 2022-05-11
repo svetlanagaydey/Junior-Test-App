@@ -22,9 +22,8 @@ const TestComponent = () => {
             let temp = seconds - 1;
 			setSeconds(temp);
 		}, 1000);
-		if (seconds === 0) {
+		if (seconds===0) {
 			clearInterval(interval);
-			alert(totalAnswer);
 			document.location = "/result";
 			localStorage.setItem('totalAnswer' , JSON.stringify(totalAnswer));
 		};
@@ -45,7 +44,10 @@ const TestComponent = () => {
 		console.log(answers[0].currentAnswer);
 		if (answers[0].currentAnswer[0] === "") {
 			chackedArray = [e.target.id];
-		} else {
+		} else if (answers[0].currentAnswer.includes(checkedId)) {
+			console.log("togle")
+			chackedArray = answers[0].currentAnswer.filter((answer) => answer !== checkedId)
+		}else if (!answers[0].currentAnswer.includes(checkedId)) {
 			chackedArray = [...answers[0].currentAnswer, checkedId ]
 		}
 		setAnswers([{
@@ -122,7 +124,7 @@ const TestComponent = () => {
 					<h3 className='card-qwestion'>{questionsList[currentQuestion].questions[0].questionText}</h3>
 					<ul className='questionsList'>
 						{questionsList[currentQuestion].questions[0].options
-						.filter(() => questionsList[currentQuestion].questions[0].writeOptionInex.length===1)
+						.filter(() => questionsList[currentQuestion].questions[0].writeOptionInex.length===1) // radio
 						.map((answer, index) => {
 							return (
 								<li key={index} className='answer'>
@@ -132,7 +134,7 @@ const TestComponent = () => {
 							)
 						})}
 						{questionsList[currentQuestion].questions[0].options
-						.filter(() => questionsList[currentQuestion].questions[0].writeOptionInex.length>1)
+						.filter(() => questionsList[currentQuestion].questions[0].writeOptionInex.length>1)  // checkbox
 						.map((answer, index) => {
 							return (
 								<li key={index} className='answer'>
@@ -146,8 +148,8 @@ const TestComponent = () => {
 				<div className='next-question' onClick={toNext}></div>
 				<Link to={{
 					pathname: "/result",
-					state: {totalAnswer},
-					}} className="submit-button" >
+					}} className="submit-button"
+					onClick={localStorage.setItem('totalAnswer' , JSON.stringify(totalAnswer))} >
 					Submit
 				</Link>
 			</div>

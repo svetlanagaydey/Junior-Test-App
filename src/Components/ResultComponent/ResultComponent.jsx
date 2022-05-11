@@ -1,22 +1,20 @@
 import React from 'react';
-import { useLocation } from "react-router-dom";
 import {Link} from 'react-router-dom';
 import './ResultComponent.css';
 import TestsList from '../TestComponent/TestList';
 
 const ResultComponent = () => {
-	const location = useLocation();
   
-  const resArr = JSON.parse(localStorage.getItem('totalAnswer')); // result array in case timeout
- 
-  const result = location.state || resArr; // in cases timeout and submit
+	const timeoutedResult = JSON.parse(localStorage.getItem('totalAnswer')); 
+
+	const result =  timeoutedResult; // in cases timeout and submit
 
 	const currentTopic = localStorage.getItem('topic');
 	let index = TestsList.findIndex(el => el.name === currentTopic);
 	const questionsList = TestsList[index].list;
   console.log(result);
 
-  if (result.length < questionsList.length) {
+  if (result.length < questionsList.length) {  // add ampty answers in case ununswered questions 
     console.log("result: " + result.length + ", questions: " + questionsList.length);
     for (let i = result.length; i < questionsList.length; i++) {
       result.push(
@@ -26,7 +24,6 @@ const ResultComponent = () => {
           writeAnswer: [questionsList[i].questions[0].writeOptionInex],
         }]
       )
-      console.log(i)
     }
   }
 	
