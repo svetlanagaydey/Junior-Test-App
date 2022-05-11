@@ -6,11 +6,29 @@ import TestsList from '../TestComponent/TestList';
 
 const ResultComponent = () => {
 	const location = useLocation();
-	const result = location.state;
+  
+  const resArr = JSON.parse(localStorage.getItem('totalAnswer')); // result array in case timeout
+ 
+  const result = location.state || resArr; // in cases timeout and submit
+
 	const currentTopic = localStorage.getItem('topic');
 	let index = TestsList.findIndex(el => el.name === currentTopic);
 	const questionsList = TestsList[index].list;
   console.log(result);
+
+  if (result.length < questionsList.length) {
+    console.log("result: " + result.length + ", questions: " + questionsList.length);
+    for (let i = result.length; i < questionsList.length; i++) {
+      result.push(
+        [{
+          currentQuestion: questionsList[i].questions[0].questionText,
+          currentAnswer: [''],
+          writeAnswer: [questionsList[i].questions[0].writeOptionInex],
+        }]
+      )
+      console.log(i)
+    }
+  }
 	
 	function total(arr) {
 		let count = 0;
@@ -31,9 +49,9 @@ const ResultComponent = () => {
 						<Link to="/users-questions" className="header_rigth-item"> To Questions</Link>
 					</ul>
 				</header>
-			<h2>Your result <span className="resultScore">{total(result.totalAnswer)}/{result.totalAnswer.length}</span></h2>
+			<h2>Your result <span className="resultScore">{total(result)}/{result.length}</span></h2>
 			<div>
-				{result.totalAnswer.map((ans, index) => {
+				{result.map((ans, index) => {
 					const writeIndexesArray = ans[0].writeAnswer; //an array
 					const currentIndexesArray = ans[0].currentAnswer;
 					const answersArray = questionsList[index].questions[0].options; // перечень вопросов
@@ -45,20 +63,20 @@ const ResultComponent = () => {
 
 							<div className="write-answer">
 								<h4>Write answer:</h4>
-                <div className='write-anwers__list'>
-                  {writeIndexesArray.map((answer) => {
-                    return <span key={answer}>{answersArray[answer]}</span>
-                  })}
-                </div>
+								<div className='write-anwers__list'>
+								{writeIndexesArray.map((answer) => {
+									return <span key={answer}>{answersArray[answer]}</span>
+								})}
+								</div>
 							</div>
 
 							<div className="user-ans">
 								<h4> Your answer:</h4>
-                <div className='user-ans__list'>
-                  {currentIndexesArray.map((answer) => {
-                    return <span key={answer}>{answersArray[answer]}</span>
-                  })}
-                </div>
+								<div className='user-ans__list'>
+								{currentIndexesArray.map((answer) => {
+									return <span key={answer}>{answersArray[answer]}</span>
+								})}
+								</div>
 							</div>
 
 						</div>

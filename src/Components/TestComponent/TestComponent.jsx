@@ -10,7 +10,7 @@ const TestComponent = () => {
 	const [answers, setAnswers] = useState([]);
 	const [checked, setChecked] = useState([]);
 	const [totalAnswer, setTotalAnswer] = useState([]);
-	const [seconds, setSeconds] = useState(90);
+	const [seconds, setSeconds] = useState(10);
 	
 	const currentTopic = localStorage.getItem('topic');
 	let index = TestsList.findIndex(el => el.name === currentTopic);
@@ -22,7 +22,12 @@ const TestComponent = () => {
             let temp = seconds - 1;
 			setSeconds(temp);
 		}, 1000);
-		if (seconds===0) clearInterval(interval)
+		if (seconds === 0) {
+			clearInterval(interval);
+			alert(totalAnswer);
+			document.location = "/result";
+			localStorage.setItem('totalAnswer' , JSON.stringify(totalAnswer));
+		};
 		return () => clearInterval(interval);
     }, [seconds]);
 
@@ -146,7 +151,6 @@ const TestComponent = () => {
 					Submit
 				</Link>
 			</div>
-			
 		</div>
 	)
 }
