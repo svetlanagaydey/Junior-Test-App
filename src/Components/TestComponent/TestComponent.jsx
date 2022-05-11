@@ -45,9 +45,8 @@ const TestComponent = () => {
 		if (answers[0].currentAnswer[0] === "") {
 			chackedArray = [e.target.id];
 		} else if (answers[0].currentAnswer.includes(checkedId)) {
-			console.log("togle")
 			chackedArray = answers[0].currentAnswer.filter((answer) => answer !== checkedId)
-		}else if (!answers[0].currentAnswer.includes(checkedId)) {
+		} else if (!answers[0].currentAnswer.includes(checkedId)) {
 			chackedArray = [...answers[0].currentAnswer, checkedId ]
 		}
 		setAnswers([{
