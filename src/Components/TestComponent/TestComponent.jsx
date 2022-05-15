@@ -28,7 +28,7 @@ const TestComponent = () => {
 			localStorage.setItem('totalAnswer' , JSON.stringify(totalAnswer));
 		};
 		return () => clearInterval(interval);
-    }, [seconds]);
+    }, [totalAnswer, seconds]);
 	useEffect(() => {
 		console.log(totalAnswer)
 	}, [totalAnswer])
@@ -39,7 +39,7 @@ const TestComponent = () => {
 			currentAnswer: [""],
 			writeAnswer: questionsList[currentQuestion].questions[0].writeOptionInex,
 		}]);
-    }, []);
+    }, [currentQuestion, questionsList]);
 
 	const handleChecked = (e) => {
 		const checkedId = e.target.id;
