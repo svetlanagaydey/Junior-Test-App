@@ -8,7 +8,7 @@ const TestComponent = () => {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [answers, setAnswers] = useState([]);
-	const [checked, setChecked] = useState([]);
+	// const [checked, setChecked] = useState([]);
 	const [totalAnswer, setTotalAnswer] = useState([]);
 	const [seconds, setSeconds] = useState(10);
 	
@@ -29,6 +29,9 @@ const TestComponent = () => {
 		};
 		return () => clearInterval(interval);
     }, [seconds]);
+	useEffect(() => {
+		console.log(totalAnswer)
+	}, [totalAnswer])
 
 	useEffect(() => {
 		setAnswers([{
